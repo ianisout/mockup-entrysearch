@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guitar Store</title>
+    <style>
+      body {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: arial, sans-serif;
+      }
+      table {
+        border-collapse: collapse;
+        width: 80%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Guitar Store</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Maker</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Price</th>
+        <th># in stock</th>
+      </tr>
+      <% listGuitars.forEach(guitar => { %>
+      <tr>
+        <td><%= guitar.id%></td>
+        <td><%= guitar.maker%></td>
+        <td><%= guitar.model %></td>
+        <td><%= guitar.year %></td>
+        <td>US$ <%=guitar.price %></td>
+        <td><%=guitar.stock %></td>
+      </tr>
+      <% }) %>
+    </table>
+    <br />
+    <a href="/guitars/add">Add new guitar</a>
+  </body>
+</html>
