@@ -10,8 +10,6 @@ exports.createUser = (name, email, password) => {
 exports.login = (email, password) => {
   const user = usersModel.findByEmail(email);
 
-  console.log(user);
-
   if (!user) {
     throw new Error('Not in the database');
   }

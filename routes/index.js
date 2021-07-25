@@ -39,12 +39,13 @@ router.get('/', (req, res) => {
  */
 
 router.get('/guitars', (req, res) => {
-  /* let user;
+  debugger;
+  let user;
 
-  user = req.session.user; */
+  user = req.session.user;
   const listGuitars = guitarController.compileListOfGuitars();
 
-  res.render('listGuitars', { listGuitars/* , user */ });
+  res.render('listGuitars', { listGuitars, user });
 });
 
 router.post('/guitarSelection', (req, res) => {

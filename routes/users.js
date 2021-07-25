@@ -19,6 +19,8 @@ router.post('/create', (req, res) => {
   req.session.user = user;
   //  CREATES ".user" inside the session and passing the user
 
+  console.log({user})
+
   res.redirect('../guitars');
 });
 
@@ -28,10 +30,14 @@ router.get('/login', (req, res) => {
 
 router.post('/login', (req, res) => {
   const { email, password } = req.body;
+  
+  let user = usersController.login(email, password);
 
-  if (!usersController.login(email, password)) {
+  if (!user) {
     throw new Error("can't log in");
   }
+
+  console.log({user})
 
   res.redirect('/guitars');
 });
