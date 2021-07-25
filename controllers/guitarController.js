@@ -1,5 +1,5 @@
-const GuitarModel = require('../models/GuitarModel');
 const fs = require('fs');
+const GuitarModel = require('../models/GuitarModel');
 
 exports.compileListOfGuitars = () => {
   const listGuitars = GuitarModel.returnListOfGuitars();
@@ -7,9 +7,14 @@ exports.compileListOfGuitars = () => {
   return listGuitars;
 };
 
-exports.addGuitar = (maker, model, year, price, stock) => {
-  GuitarModel.addGuitar(maker, model, year, price, stock);
+exports.findById = (id) => {
+  guitar = GuitarModel.findById(id);
+
+  return guitar;
 };
+
+exports.addGuitar = (maker, model, year, price, stock) =>
+  GuitarModel.addGuitar(maker, model, year, price, stock);
 
 exports.importGuitars = (path) => {
   const guitarInfoTxt = fs.readFileSync(path, 'UTF-8');

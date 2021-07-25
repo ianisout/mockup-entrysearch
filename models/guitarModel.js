@@ -1,10 +1,12 @@
-const guitars = require('../database/guitars.json');
-const { v4 } = require('uuid');
 const fs = require('fs');
+const { v4 } = require('uuid');
+const guitars = require('../database/guitars.json');
 
 exports.returnListOfGuitars = () => {
   return guitars;
 };
+
+exports.findById = (id) => guitars.find((guitar) => guitar.id === id);
 
 exports.addGuitar = (maker, model, year, price, stock) => {
   let id = v4();
@@ -15,3 +17,5 @@ exports.addGuitar = (maker, model, year, price, stock) => {
 
   return newGuitar;
 };
+
+exports.deleteGuitar = (id) => {};

@@ -5,33 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guitar Store</title>
-    <style>
-      body {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-family: arial, sans-serif;
-      }
-      table {
-        border-collapse: collapse;
-        width: 80%;
-      }
-
-      td,
-      th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-      }
-
-      tr:nth-child(even) {
-        background-color: #dddddd;
-      }
-    </style>
+    <link rel="stylesheet" href="stylesheets/style.css">
   </head>
   <body>
     <h1>Guitar Store</h1>
+    <p>Welcome</p>
     <table>
       <tr>
         <th>ID</th>
@@ -53,6 +31,11 @@
       <% }) %>
     </table>
     <br />
+    <form action="/guitarSelection" method="post">
+      Finda a guitar: <input type="text" name="id" />
+      <button type="submit">Find</button>
+    </form>
+    or
     <a href="/guitars/add">Add new guitar</a>
   </body>
 </html>

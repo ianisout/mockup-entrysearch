@@ -24,7 +24,7 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-router.get('/', function (req, res, next) {
+router.get('/', (req, res) => {
   res.render('index', { title: 'Guitar store 2.0' });
 });
 
@@ -39,9 +39,21 @@ router.get('/', function (req, res, next) {
  */
 
 router.get('/guitars', (req, res) => {
+  /* let user;
+
+  user = req.session.user; */
   const listGuitars = guitarController.compileListOfGuitars();
 
-  res.render('listGuitars', { listGuitars });
+  res.render('listGuitars', { listGuitars/* , user */ });
+});
+
+router.post('/guitarSelection', (req, res) => {
+  const { id } = req.body;
+
+  console.log(req.body);
+  const guitar = guitarController.findById(id);
+
+  res.render('guitarSelection', guitar);
 });
 
 router.get('/guitars/add', (req, res) => {
