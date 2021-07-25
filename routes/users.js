@@ -19,7 +19,7 @@ router.post('/create', (req, res) => {
   req.session.user = user;
   //  CREATES ".user" inside the session and passing the user
 
-  res.render('/listGuitars');
+  res.redirect('../guitars');
 });
 
 router.get('/login', (req, res) => {
@@ -34,6 +34,11 @@ router.post('/login', (req, res) => {
   }
 
   res.redirect('/guitars');
+});
+
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.send('worked');
 });
 
 module.exports = router;
