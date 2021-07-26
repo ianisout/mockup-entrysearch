@@ -40,7 +40,6 @@ router.get('/', (req, res) => {
  */
 
 router.get('/guitars', (req, res) => {
-  let user;
   let mySession = sessionController.getSession(req.cookies.IDsession);
   
   // passando para get session
@@ -48,7 +47,7 @@ router.get('/guitars', (req, res) => {
     res.redirect('request-login')
   }
   
-  user = mySession.user;
+  let user = mySession.user;
   
   const listGuitars = guitarController.compileListOfGuitars();
   res.render('listGuitars', { listGuitars, user });

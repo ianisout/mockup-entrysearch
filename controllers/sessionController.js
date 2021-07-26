@@ -8,15 +8,13 @@ exports.createSession = (sessionID, userObj) => {
   fs.writeFileSync('./database/session.json', JSON.stringify(sessions));
   // writes it all down on the DB
 
-  return sessions[sessionID]; //returns 
+  return sessions[sessionID]; //returns
 };
 
 exports.getSession = (sessionID) => {
   return sessions[sessionID];
 };
 
-exports.logOut = () => {
-  sessionID = this.getSession();
-  console.log(sessionID)
-  fs.unlinkSync(sessionID)
-}
+exports.logout = (sessionID) => {
+  fs.writeFileSync('./database/session.json', JSON.stringify({}))
+};

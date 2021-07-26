@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
   res.send('respond with a resource');
 });
 
+// USER CREATION
 router.get('/create', (req, res) => {
   res.render('createUser');
 });
@@ -24,6 +25,7 @@ router.post('/create', (req, res) => {
   res.redirect('../guitars');
 });
 
+// USER LOGIN
 router.get('/login', (req, res) => {
   res.render('login');
 });
@@ -33,21 +35,24 @@ router.post('/login', (req, res) => {
   const user = usersController.login(email, password);
 
   if (!user) {
-    throw new Error("can't log in");
+    throw new Error("can't log in with these credentials");
   }
 
-  // sessionController.createSession(user.id, { user });
-  console.log(sessionController.createSession(user.id, { user }))
+  sessionController.createSession(user.id, { user });
+
   res.cookie('IDsession', user.id);
 
   res.redirect('/guitars');
 });
 
-router.get('/logout', (req, res) => {
-  let session = req.cookie(user.id);
-  console.log(session)
+// USER LOGOUT
 
-  res.send('worked');
+router.get('/logout', (req, res) => {
+  let sessionID = sessionController.getSession(req.cookies.IDsession);
+
+  sessionController.logout(sessionID)
+
+  res.redirect('/');
 });
 
 module.exports = router;
