@@ -41,17 +41,21 @@ router.get('/', (req, res) => {
 
 router.get('/guitars', (req, res) => {
   let user;
-
-  const listGuitars = guitarController.compileListOfGuitars();
-
   let mySession = sessionController.getSession(req.cookies.IDsession);
+  
   // passando para get session
-  // console.log(req.cookies)
-
+  if(!mySession) {
+    res.redirect('request-login')
+  }
+  
   user = mySession.user;
-
-
+  
+  const listGuitars = guitarController.compileListOfGuitars();
   res.render('listGuitars', { listGuitars, user });
+});
+
+router.get('/request-login', (req, res) => {
+  res.render('requestLogin');
 });
 
 router.post('/guitarSelection', (req, res) => {
