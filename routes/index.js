@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const guitarController = require('../controllers/guitarController');
+const sessionController = require('../controllers/sessionController');
 const multer = require('multer');
 const upload = multer({ dest: 'tmp/' });
 
@@ -39,11 +40,16 @@ router.get('/', (req, res) => {
  */
 
 router.get('/guitars', (req, res) => {
-  debugger;
   let user;
 
-  user = req.session.user;
   const listGuitars = guitarController.compileListOfGuitars();
+
+  let mySession = sessionController.getSession(req.cookies.IDsession);
+  // passando para get session
+  // console.log(req.cookies)
+
+  user = mySession.user;
+
 
   res.render('listGuitars', { listGuitars, user });
 });

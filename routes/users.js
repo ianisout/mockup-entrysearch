@@ -1,5 +1,6 @@
 const express = require('express');
 const usersController = require('../controllers/usersController');
+const sessionController = require('../controllers/sessionController');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -16,10 +17,10 @@ router.post('/create', (req, res) => {
   const user = usersController.createUser(name, email, password);
   // saved in a variable so you can use it inside the session
 
-  req.session.user = user;
+  sessionController.createSession(user.id, { user })// req.session.user = user;
   //  CREATES ".user" inside the session and passing the user
 
-  console.log({user})
+  res.cookie('IDsession', user.id);
 
   res.redirect('../guitars');
 });
@@ -30,14 +31,14 @@ router.get('/login', (req, res) => {
 
 router.post('/login', (req, res) => {
   const { email, password } = req.body;
-  
+
   let user = usersController.login(email, password);
 
   if (!user) {
     throw new Error("can't log in");
   }
 
-  console.log({user})
+  console.log({ user });
 
   res.redirect('/guitars');
 });
