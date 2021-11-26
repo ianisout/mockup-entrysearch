@@ -25,7 +25,7 @@ You don't have access it on your browser for the testing to work on the other pr
 There's currently one user created for the testing:<br>
 Username: `test@test.test`<br>
 Password: `test@test.test`<br><br>
-NOTE: Other users can be created, but the search won't work unless you change the log in credentials on the <a href="https://github.com/ianisout/search-automation-xlsx">other project's script</a>.<br>
+NOTE: Other users can be created, but the search won't work unless you change the log in credentials on the <a href="https://github.com/ianisout/search-automation-xlsx#inner-workings">other project's script</a>.<br>
 
 <hr>
 <h3>A couple of screenshots 'cause why not:</h3>
