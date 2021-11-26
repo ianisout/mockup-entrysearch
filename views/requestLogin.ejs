@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include('./partials/general') %>
-    <style>
-      body {
-        text-align: center;
-        padding: 50px;
-        line-height: 50px;
-      }
-    </style>
+    <%- include('./partials/head') %>
   </head>
-  <body>
+  <body style="text-align: center">
+    <%- include('./partials/header') %>
     <h1>You must be logged in to access the system</h1>
-    <a href="/users/login"><button>Log in</button></a>
+    <a href="/users/login"
+      ><button class="btn btn-outline-danger">Log in</button></a
+    >
     Or
-    <a href="/users/create"><button>Sign up</button></a>
+    <a href="/users/create"
+      ><button class="btn btn-outline-danger">Sign up</button></a
+    >
   </body>
 </html>

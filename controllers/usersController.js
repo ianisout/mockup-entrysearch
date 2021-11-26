@@ -11,11 +11,11 @@ exports.login = (email, password) => {
   const user = usersModel.findByEmail(email);
 
   if (!user) {
-    throw new Error('Not in the database');
+    throw new Error("Something's wrong");
   }
 
   if (!bcryptjs.compareSync(password, user.hashed)) {
-    throw new Error('Password shit');
+    throw new Error("Something's wrong");
   }
 
   return user;

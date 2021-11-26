@@ -1,0 +1,42 @@
+[
+  {
+    "maker": "test1_test_yada_yada",
+    "ID": 123456,
+    "AIB Payout Amount": 10.54
+  },
+  {
+    "maker": "test2_test_yada_yada",
+    "ID": 234567,
+    "AIB Payout Amount": 15562.85
+  },
+  {
+    "maker": "test3_test_yada_yada",
+    "ID": 345678,
+    "AIB Payout Amount": 26.4
+  },
+  {
+    "maker": "test4_test_yada_yada",
+    "ID": 456789,
+    "AIB Payout Amount": 2.8
+  },
+  {
+    "maker": "test5_test_yada_yada",
+    "ID": 567890,
+    "AIB Payout Amount": 545258.12
+  },
+  {
+    "maker": "test6_test_yada_yada",
+    "ID": 678901,
+    "AIB Payout Amount": 65088.32
+  },
+  {
+    "maker": "test7_test_yada_yada",
+    "ID": 789012,
+    "AIB Payout Amount": 2541.1
+  },
+  {
+    "maker": "test8_test_yada_yada",
+    "ID": 890123,
+    "AIB Payout Amount": 11.54
+  }
+]

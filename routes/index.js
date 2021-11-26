@@ -1,96 +1,34 @@
 const express = require('express');
 const router = express.Router();
-const guitarController = require('../controllers/guitarController');
-const sessionController = require('../controllers/sessionController');
-const multer = require('multer');
-const upload = multer({ dest: 'tmp/' });
-
-//npm i swagger-jsdoc swagger-ui-express
-const swaggerJsDoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
-
-const swaggerOptions = {
-  swaggerDefinition: {
-    info: {
-      title: 'API for Guitar Store 2.0',
-      descrition: 'Test of the use of swagger for openapi-validator',
-      contact: { name: 'Ian' },
-      servers: ['http://localhost:3000/'],
-    },
-  },
-  apis: ['./routes/index.js'],
-};
-
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
-
-router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+const userMerchantController = require('../controllers/userMerchantController');
 
 router.get('/', (req, res) => {
-  res.render('index', { title: 'Guitar store 2.0' });
+  res.render('index', { title: 'Mock up entry search site' });
 });
 
-/**
- * @swagger
- * /guitars:
- *  get:
- *    description: Use to request a list of all guitars
- *    responses:
- *    '200':
- *      description: Success!
- */
-
-router.get('/guitars', (req, res) => {
-  let mySession = sessionController.getSession(req.cookies.IDsession);
-  
-  // passando para get session
-  if(!mySession) {
-    res.redirect('request-login')
+router.get('/search', (req, res) => {
+  if (!req.session.user) {
+    return res.redirect('request-login');
   }
-  
-  let user = mySession.user;
-  
-  const listGuitars = guitarController.compileListOfGuitars();
-  res.render('listGuitars', { listGuitars, user });
+  let user = req.session.user;
+
+  res.render('search', { user });
 });
 
 router.get('/request-login', (req, res) => {
   res.render('requestLogin');
 });
 
-router.post('/guitarSelection', (req, res) => {
+router.post('/searchSelection', (req, res) => {
   const { id } = req.body;
 
-  console.log(req.body);
-  const guitar = guitarController.findById(id);
+  const userMerchant = userMerchantController.findById(id);
 
-  res.render('guitarSelection', guitar);
-});
+  if (!userMerchant) {
+    return res.send('user/merchant not found');
+  }
 
-router.get('/guitars/add', (req, res) => {
-  res.render('addGuitar');
-});
-
-/**
- * @swagger
- * /guitars/add:
- *  post:
- *    description: Use to add a new guitar
- *    responses:
- *      '200':
- *        description: Success!
- */
-
-router.post('/guitars/add', (req, res) => {
-  const { maker, model, year, price, stock } = req.body;
-
-  guitarController.addGuitar(maker, model, year, price, stock);
-
-  res.redirect('/guitars');
-});
-
-router.post('/guitars/import', upload.single('file'), (req, res) => {
-  guitarController.importGuitars(req.file.path);
-  res.redirect('/guitars');
+  res.render('searchSelection', userMerchant);
 });
 
 module.exports = router;

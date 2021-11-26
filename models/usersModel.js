@@ -15,8 +15,8 @@ exports.createUser = (name, email, password) => {
   return newUser;
 };
 
-exports.findByEmail = email => {
-  const user = users.find(user => user.email === email);
+exports.findByEmail = (email) => {
+  const user = users.find((user) => user.email === email);
 
   return user;
-}
+};

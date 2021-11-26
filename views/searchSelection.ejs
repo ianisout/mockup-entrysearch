@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+    <%- include('./partials/header') %>
+    <h1>Search results</h1>
+    <table class="table table-striped table-hover" style="margin-top: 50px">
+      <tr>
+        <th>Account</th>
+        <th>ID</th>
+        <th>Amount</th>
+        <th>Other info</th>
+      </tr>
+      <tr>
+        <td><%= userMerchant.maker%></td>
+        <td><%= userMerchant.ID %></td>
+        <td><%=userMerchant['AIB Payout Amount'] %></td>
+        <td>Lorem Ipsum</td>
+      </tr>
+    </table>
+    <ul>
+      <form action="http://localhost:3000/search">
+        <input type="submit" value="Change search" />
+      </form>
+    </ul>
+  </body>
+</html>
