@@ -7,12 +7,13 @@
 
 ## How to use it
 
-Clone this repository via terminal with <br>
-`git clone https://github.com/ianisout/mockup-entrysearch`
+Go to a folder of your choosing and clone this repository via terminal with <br>
+`git clone https://github.com/ianisout/mockup-entrysearch .`<br>
+<sub> The dot will make sure that you're cloning it directly into the chosen folder and not create a subfolder.</sub>
 
-On your project folder, run<br>
+Run<br>
 `npm install`<br><br>
-Wait for until all dependencies are downloaded, then run<br>
+Wait for until all dependencies are updated, then run<br>
 `npx nodemon`<br>
 
 Your project should be up and running, access it on the url<br>
